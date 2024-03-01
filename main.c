@@ -1,29 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "BST.h"
-int main( int argc, char** argv )
-{ 
-   unsigned int i; // counter to loop from 1-10
-   int item; // variable to hold random values
-   BST b;
 
-   
-	b.root= NULL;  b.size=0;// tree initially empty
-for ( i = 1; i < argc; ++i ) { 
-      insertNode( &b, atoi(argv[i]));
-   //  insertNode_R(&b.root,atoi(argv[i]) );
-  } // end for
-   // traverse the tree preOrder
-   /* printf("\nThe preOrder traversal is:\n" );
-   preOrder( rootPtr );*/
+void main(int argc, char **argv){
+    
+    //initial binary tree
+    BinaryTree BT;
+    BT.root = NULL;
+    BT.size = 0;
 
-   // traverse the tree inOrder
-   printf("\nThe inOrder traversal is:\n" );
-   inOrder( b.root );
-/*
-   // traverse the tree postOrder
- printf("\nThe postnOrder traversal is:\n" );   postOrder( rootPtr );
-*/
-    printf("\n");
-} // end main
+    for(int i = 1; i<argc;i++){
+        insert_R(&BT.root, atoi(argv[i]));
+    }
+    // printf("root is %d\n", BT.root->data);
+    // if(BT.root->ln)printf("root's left is %d\n", BT.root->ln->data);
+    // else printf("no left\n");
+    // if(BT.root->rn)printf("root's right is %d\n", BT.root->rn->data);
+    // else printf("no right\n");
+    printf(">----------\n");
+    printf("in-order is : ");
+    print_inorder_R(BT.root);
+    printf("\n>----------\n");
 
+    printf("pre-order is : ");
+    print_preorder_R(BT.root);
+    printf("\n>----------\n");
+
+    printf("post-order is : ");
+    print_postorder_R(BT.root);
+    printf("\n>----------\n");
+
+    //printf("end main.c\n"); check if end
+
+    //auto insert input into tree
+    /*
+    for(int i = 1; i<argc; i++)
+    {
+        
+    }
+    */
+
+    // there's while loop in else to search for available node 
+
+}
